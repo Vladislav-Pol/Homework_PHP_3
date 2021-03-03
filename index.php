@@ -244,8 +244,24 @@ function get_speed()
 
 //13. Даны 2 слова, определить можно ли из 1ого слова составить 2ое, при
 //условии что каждую букву из строки 1 можно использовать только один раз.
-echo "<hr>"; //todo
+echo "<hr>";
 
+function is_posible($text1, $text2){
+    $result = "можно";
+
+    for($i = 0; $i < strlen($text2); $i++){
+        $symb = substr($text2, $i, 1);
+        if(substr_count($text1, $symb) < substr_count($text2, $symb))
+            $result = "нельзя";
+    }
+
+    return "Из букв фразы <p>$text1</p> $result составить фразу <p>$text2</p>";
+}
+
+$str1 = "Hello my friend";
+$str2 = "Hello world";
+
+echo is_posible($str1, $str2);
 
 //14. Палиндромом называют последовательность символов, которая читается
 //как слева направо, так и справа налево. Напишите функцию по определению
@@ -302,7 +318,6 @@ echo "<hr>";
 
 function get_longest_word($text)
 {
-    preg_replace("[!@#$%\^&*\(\)_\+-=]", "", $text);
     $arr_words = explode(" ", $text);
     $longest_word = "";
     foreach ($arr_words as $item)
