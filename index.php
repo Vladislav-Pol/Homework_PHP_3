@@ -258,8 +258,8 @@ function is_posible($text1, $text2){
     return "Из букв фразы <p>$text1</p> $result составить фразу <p>$text2</p>";
 }
 
-$str1 = "Hello my friend";
-$str2 = "Hello world";
+$str1 = "Привет Hello my friend";
+$str2 = "Hello Пит";
 
 echo is_posible($str1, $str2);
 
@@ -350,3 +350,17 @@ echo $count;
 //не должна начинаться с пробела.
 echo "<hr>"; //todo
 
+$text = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi eius fuga ipsa natus quaerat, totam vero! Architecto cum doloribus incidunt quae unde? Alias aliquam aliquid at autem consectetur culpa ea enim hic labore, magnam, numquam obcaecati provident quidem quod quos repellendus repudiandae rerum sapiente tempora vel. Aliquid aut optio perferendis";
+$max_length = 45;
+$text_new = "";
+
+while(strlen($text) > $max_length){
+
+    $substr = substr($text, 0, $max_length);
+    $space_position = strripos($substr, " ");
+    $text_new .= (substr($text, 0, $space_position) . "<br/>");
+    $text = substr($text, $space_position++);
+}
+
+echo $text_new;
+//echo wordwrap($text, $max_length, "<br/>");
